@@ -37,14 +37,22 @@ function App() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
       <h1>QR Code Generator</h1>
       <input
         type="text"
         placeholder="กรอก URL ที่ต้องการ"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
-        style={{ padding: "10px", width: "300px" }}
+        style={{ padding: "10px", width: "300px", marginBottom: "20px" }}
       />
       <div>
         <button
@@ -60,11 +68,19 @@ function App() {
           คัดลอกไปยังคลิปบอร์ด
         </button>
       </div>
-      <div ref={qrRef} style={{ marginTop: "20px" }}>
+      <div
+        ref={qrRef}
+        style={{
+          marginTop: "20px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         {url && (
           <QRCodeCanvas
             value={url}
-            size={300}
+            size={500} // ตั้งค่าขนาด QR Code เป็น 500x500
             bgColor="#ffffff"
             fgColor="#000000"
             level="L"
